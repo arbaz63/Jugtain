@@ -179,14 +179,8 @@ export const JugatApp=()=>{
 
     //like jugat
     const likeJugat=(i,fid)=>{
-      if(isLiked==='false'){
-        jugtain[i].likes=jugtain[i].likes+1
-        setIsLiked('true')
-      }
-      else{
-        jugtain[i].likes=jugtain[i].likes-1
-        setIsLiked('false') 
-      }
+      
+      jugtain[i].likes=jugtain[i].likes+1
       setJugtain([...jugtain])
       database.ref(`jugtain/${fid}/`).update({
           likes:jugtain[i].likes
