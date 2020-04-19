@@ -1,0 +1,22 @@
+.main-jugat-row{
+    padding:2px;
+    border-bottom:2px solid #16BBD9;
+    border-radius: 10px;
+    margin:5px 0;
+}
+.catagory-heading{
+    justify-content: center;
+    padding:0px;
+    border:2px solid #219CB2;
+    background:  #219CB2;
+    border-radius: 5px;
+    border-bottom: none;
+}
+.catagory-container{
+    margin-bottom: 5px;
+}
+.random{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+}
