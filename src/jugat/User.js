@@ -94,10 +94,6 @@ const User=({jSearch,setJsearch,search,setSearch,renderOptions,jugtain,cats,setC
             <Header changeMode={changeMode}/>
           </div>
           <div className='row'>
-            {/* searchbox */}
-            <div className='col-sm-6'>
-            <input className='form-control' type="text"placeholder="Search jugat"value={jSearch}onChange={(e)=>setJsearch(e.target.value)}/>
-            </div>
             {/* catagory dropdown */}
             <div className='col-sm-3'>
             <select className='browser-default custom-select' name="search"value={search}onChange={(e)=>{setSearch(e.target.value)}}>
@@ -112,6 +108,10 @@ const User=({jSearch,setJsearch,search,setSearch,renderOptions,jugtain,cats,setC
                 <option value='date'>Date</option>
                 <option value='name'>Name</option>
               </select>
+            </div>
+            {/* searchbox */}
+            <div className='col-sm-6'>
+            <input className='form-control' type="text"placeholder="Search jugat"value={jSearch}onChange={(e)=>setJsearch(e.target.value)}/>
             </div>
           </div>
           {/* random jugat */}
