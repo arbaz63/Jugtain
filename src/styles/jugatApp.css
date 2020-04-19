@@ -20,3 +20,6 @@
     margin-bottom: 10px;
     justify-content: center;
 }
+.disable{
+    background: gray;
+}

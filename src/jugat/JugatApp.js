@@ -44,6 +44,7 @@ export const JugatApp=()=>{
     const [likes,setLikes]=useState(0)
     const [findex,setFindex]=useState(0)
     const [visible,setVisible]=useState(3)
+    const [isLiked,setIsLiked]=useState("false")
     const authListener=()=>{
       fire.auth().onAuthStateChanged((user)=>{
         if(user)
@@ -125,7 +126,8 @@ export const JugatApp=()=>{
     
     useEffect(()=>{
       
-      const jj=[{id:1,jugat:'daday wali',catagory:'dada'}]
+      const liked=localStorage.getItem('isLiked')
+      setIsLiked(liked)
       // localStorage.setItem('jugtain',JSON.stringify(jugtain))
       //get jugtain from firebase
       database.ref('jugtain').once('value')
@@ -153,6 +155,9 @@ export const JugatApp=()=>{
       })
        authListener()
     },[])
+    useEffect(()=>{
+      localStorage.setItem('isLiked',isLiked)
+    },[isLiked])
     const renderOptions=()=>{
       const data=cats.map((cat,i)=><option key={i}value={cat.cat}>{cat.cat}</option>)
       return data
@@ -174,12 +179,19 @@ export const JugatApp=()=>{
 
     //like jugat
     const likeJugat=(i,fid)=>{
-
-      jugtain[i].likes=jugtain[i].likes+1
+      if(isLiked==='false'){
+        jugtain[i].likes=jugtain[i].likes+1
+        setIsLiked('true')
+      }
+      else{
+        jugtain[i].likes=jugtain[i].likes-1
+        setIsLiked('false') 
+      }
       setJugtain([...jugtain])
       database.ref(`jugtain/${fid}/`).update({
           likes:jugtain[i].likes
         })
+      console.log(isLiked)
     }
     return(
       <div>
