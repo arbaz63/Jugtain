@@ -14,7 +14,7 @@ const Header=({changeMode})=>{
     <div className='container'>
       <div className='row'>
         <div className='col-sm-10'>
-          <h1>Jugtain</h1>
+          <h1>Jugtain v1.0</h1>
         </div>
         <div className='col-sm-2'>
           
@@ -29,30 +29,18 @@ const Header=({changeMode})=>{
   )
 }
 //user component
-const User=({jSearch,setJsearch,search,setSearch,renderOptions,jugtain,cats,setCats,likeJugat})=>{
+const User=({jSearch,setJsearch,search,setSearch,renderOptions,jugtain,cats,setCats})=>{
   const [sortBy,setSortBy]=React.useState('name')
   const [selectedOption,setSelectedOption]=React.useState(undefined)
   const [visible,setVisible]=React.useState(3)
   const [toggle,setToggle]=React.useState('Light Mode')
-  // const [count,setCount]=React.useState([])
-  // const [cc,setCC]=React.useState(0)
-  // const counter=()=>{
-  //   setCount([...count,{cc}])
-  //   console.log(count)
-  // }
-  // const increment=(i)=>{
-  //   count[i].cc=count[i].cc+1//for editing
-  //   // count.splice(i,1)//for deleting
-  //   setCount([...count])
-  // }
-  //display by selecting catagory dropdown
   const display=(sorted)=>{
     const data=
      sorted.filter((jugat)=>jugat.catagory===search).slice(0,visible).map((jugat,i)=>{
        if(search==='No Catagory Selected'||search==='Show All'||search==='')
         return <p key={i}></p>
        else 
-     return  jugat.catagory===search&&<div className='container main-jugat-row'><div className='row' key={i}><div className='col-sm-10'><h6>{jugat.jugat}</h6></div><div className='col-sm-2'><button className='btn btn-outline-info random btn-block' onClick={()=>likeJugat(jugat.findex,jugat.id)}>Like {jugat.likes}</button></div></div></div>
+     return  jugat.catagory===search&&<div className='container main-jugat-row'><div className='row' key={i}><div className='col-sm-12'><h6>{jugat.jugat}</h6></div></div></div>
     })
     return data
   }
@@ -85,10 +73,6 @@ const User=({jSearch,setJsearch,search,setSearch,renderOptions,jugtain,cats,setC
         
     <Body>
       <div>
-        {/* <input type='text'value={cc}onChange={(e)=>setCC(e.target.value)}/> */}
-        {/* <button onClick={counter}>click</button>
-        
-    {count.map((c2,i)=> <h2>{c2.cc} {<button onClick={()=> increment(i)}>inc</button>}</h2>)} */}
         <div className='container'>
           <div className='row'>
             <Header changeMode={changeMode}/>
@@ -140,7 +124,7 @@ const User=({jSearch,setJsearch,search,setSearch,renderOptions,jugtain,cats,setC
                 {/* jugat list with catagory heading */}
               {(search==='No Catagory Selected'||search===''||search==='Show All')&& cats.map((cat,i)=>{
                 return jugtain.filter((jugat)=>jugat.catagory===cat.cat).length?<div className='container catagory-container'><div className='row catagory-heading'> <h4>{ cat.cat}</h4></div>{jugtain.filter((jugat)=>cat.cat===jugat.catagory).slice(0,cat.visible).map((jugat,ii)=>{
-                return cat.cat===jugat.catagory&&<div className='row main-jugat-row' key={i}><div className='col-sm-10'> <h6>{jugat.jugat}</h6> </div><div className='col-sm-2'> <button className='btn btn-outline-info btn-sm btn-block'onClick={()=>likeJugat(jugat.findex,jugat.id)}>Like {jugat.likes}</button></div></div>
+                return cat.cat===jugat.catagory&&<div className='row main-jugat-row' key={i}><div className='col-sm-12'> <h6>{jugat.jugat}</h6> </div></div>
                 })}{cat.visible<jugtain.filter((jugat)=>jugat.catagory===cat.cat).length&&  <div className='row'> <button className='btn btn-outline-info btn-sm btn-block' onClick={()=>loadMore1(i)}>Load More</button></div>}
                
               </div>:''
