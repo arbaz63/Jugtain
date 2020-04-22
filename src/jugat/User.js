@@ -103,7 +103,7 @@ const User=({jSearch,setJsearch,search,setSearch,renderOptions,jugtain,cats,setC
             <div className='col'>
             <button className='btn btn-outline-info random btn-block' onClick={randomJugat}>
                 <div className='row'>
-                  <div className='col'><h2>Random</h2></div>
+                  <div className='col'><h2>^.^Random^.^</h2></div>
                 </div>
                 <div className='row'>
                   <div className='col'><h2>{selectedOption}</h2></div>
@@ -125,7 +125,7 @@ const User=({jSearch,setJsearch,search,setSearch,renderOptions,jugtain,cats,setC
               {(search==='No Catagory Selected'||search===''||search==='Show All')&& cats.map((cat,i)=>{
                 return jugtain.filter((jugat)=>jugat.catagory===cat.cat).length?<div className='container catagory-container'><div className='row catagory-heading'> <h4>{ cat.cat} ({jugtain.filter((jugat)=>jugat.catagory===cat.cat).length})</h4></div>{jugtain.filter((jugat)=>cat.cat===jugat.catagory).slice(0,cat.visible).map((jugat,ii)=>{
                 return cat.cat===jugat.catagory&&<div className='row main-jugat-row' key={i}><div className='col-sm-12'> <h6>{jugat.jugat}</h6> </div></div>
-                })}{cat.visible<jugtain.filter((jugat)=>jugat.catagory===cat.cat).length&&  <div className='row'> <button className='btn btn-outline-info btn-sm btn-block' onClick={()=>loadMore1(i)}><h3>Load More</h3></button></div>}
+                })}{cat.visible<jugtain.filter((jugat)=>jugat.catagory===cat.cat).length&&  <div className='row'> <button className='btn btn-outline-info btn-sm btn-block' onClick={()=>loadMore1(i)}><h6>Load More</h6></button></div>}
                
               </div>:''
             })}
