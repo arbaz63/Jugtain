@@ -30,7 +30,7 @@ const Header=({changeMode})=>{
 }
 //user component
 const User=({jSearch,setJsearch,search,setSearch,renderOptions,jugtain,cats,setCats})=>{
-  const [sortBy,setSortBy]=React.useState('name')
+  const [sortBy,setSortBy]=React.useState('date')
   const [selectedOption,setSelectedOption]=React.useState(undefined)
   const [visible,setVisible]=React.useState(3)
   const [toggle,setToggle]=React.useState('Light Mode')
@@ -123,7 +123,7 @@ const User=({jSearch,setJsearch,search,setSearch,renderOptions,jugtain,cats,setC
                 {visible<jugtain.filter((jugat)=>jugat.catagory===search).length&&<button className='btn btn-outline-info btn-sm btn-block'onClick={()=>loadMore(visible)}>Load More</button>}
                 {/* jugat list with catagory heading */}
               {(search==='No Catagory Selected'||search===''||search==='Show All')&& cats.map((cat,i)=>{
-                return jugtain.filter((jugat)=>jugat.catagory===cat.cat).length?<div className='container catagory-container'><div className='row catagory-heading'> <h4>{ cat.cat}</h4></div>{jugtain.filter((jugat)=>cat.cat===jugat.catagory).slice(0,cat.visible).map((jugat,ii)=>{
+                return jugtain.filter((jugat)=>jugat.catagory===cat.cat).length?<div className='container catagory-container'><div className='row catagory-heading'> <h4>{ cat.cat} ({jugtain.filter((jugat)=>jugat.catagory===cat.cat).length})</h4></div>{jugtain.filter((jugat)=>cat.cat===jugat.catagory).slice(0,cat.visible).map((jugat,ii)=>{
                 return cat.cat===jugat.catagory&&<div className='row main-jugat-row' key={i}><div className='col-sm-12'> <h6>{jugat.jugat}</h6> </div></div>
                 })}{cat.visible<jugtain.filter((jugat)=>jugat.catagory===cat.cat).length&&  <div className='row'> <button className='btn btn-outline-info btn-sm btn-block' onClick={()=>loadMore1(i)}>Load More</button></div>}
                
