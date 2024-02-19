@@ -41,10 +41,8 @@ export const JugatApp=()=>{
     const [index,setIndex]=useState(0)
     const [prevCat,setPrevCat]=useState('')//for jugat's prev catagory
     const date=date1.toString()//firebase can store dates only in strings
-    const [likes,setLikes]=useState(0)
     const [findex,setFindex]=useState(0)
-    const [visible,setVisible]=useState(3)
-    const [isLiked,setIsLiked]=useState("false")
+    const visible = 3;
     const [views,setViews]=useState(0)
     const authListener=()=>{
       fire.auth().onAuthStateChanged((user)=>{
@@ -63,10 +61,10 @@ export const JugatApp=()=>{
       {
           catagory!=='No Catagory Selected'&&
         setJugtain(
-          [...jugtain,{jugat,catagory,date,id,likes:0,findex}]
+          [...jugtain,{jugat,catagory,date,id,findex}]
         )
         database.ref('jugtain').push({
-          jugat,catagory,date,likes,findex
+          jugat,catagory,date,findex
         })
         setJugat('')
         setFindex(findex+1)
@@ -127,7 +125,6 @@ export const JugatApp=()=>{
     
     useEffect(()=>{
       const liked=localStorage.getItem('isLiked')
-      setIsLiked(liked)
       database.ref('views').once('value')
       .then((snapshot)=>{
         const v=snapshot.val().Views
