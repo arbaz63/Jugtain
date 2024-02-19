@@ -124,7 +124,7 @@ export const JugatApp=()=>{
     //component did mount/update
     
     useEffect(()=>{
-      const liked=localStorage.getItem('isLiked')
+      
       database.ref('views').once('value')
       .then((snapshot)=>{
         const v=snapshot.val().Views
